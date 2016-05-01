@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import Binden.Controles.ControlCita;
+import Binden.Entidades.Cita;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
@@ -24,7 +25,7 @@ import java.util.Calendar;
      @WebInitParam(name = "class", value = "interfaces.InterfazCita")
   }
 )
-public class InterfazCita extends HttpServlet {
+public class InterfazVerCitas extends HttpServlet {
 
    //Redirige cualquier GET recibido a POST
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -82,7 +83,7 @@ public class InterfazCita extends HttpServlet {
             if (aceptar != null) {
               cCita.aceptarCita(idUsuario, aceptar, conn);
             } else if (rechazar != null){
-              cSita.cancelarCita(rechazar, conn);
+              cCita.cancelarCita(rechazar, conn);
             }
 
 

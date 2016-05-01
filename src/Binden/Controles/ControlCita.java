@@ -23,7 +23,7 @@ public class ControlCita {
    }
 
    public ArrayList<Cita> obtenerCitas(String idUsuario1, Connection con){
-     return usuario1.obtenerCitas(idUsuario1, con);
+     return cita.obtenerCitas(idUsuario1, con);
    }
 
    public void agendarCita(String receiver, String sender, String fecha,
