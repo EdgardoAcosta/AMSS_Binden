@@ -10,6 +10,22 @@ public class Solicitud {
   PreparedStatement stmt;
   String idSolicitud, usuario1, usuario2;
 
+    public PreparedStatement getStmt() {
+        return stmt;
+    }
+
+    public String getIdSolicitud() {
+        return idSolicitud;
+    }
+
+    public String getUsuario1() {
+        return usuario1;
+    }
+
+    public String getUsuario2() {
+        return usuario2;
+    }
+
   public Solicitud(String sender, String receiver, String id){
     idSolicitud = id;
     usuario1 = sender;

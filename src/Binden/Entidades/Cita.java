@@ -15,6 +15,34 @@ public class Cita {
    String idCita, usuario1, usuario2, descripcion , fecha;
    SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
 
+    public PreparedStatement getStmt() {
+        return stmt;
+    }
+
+    public String getIdCita() {
+        return idCita;
+    }
+
+    public String getUsuario1() {
+        return usuario1;
+    }
+
+    public String getUsuario2() {
+        return usuario2;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public SimpleDateFormat getFormatter() {
+        return formatter;
+    }
+
    public Cita(String user1 ,String user2,String id,String date,String desc){
      usuario1 = user1;
      usuario2 = user2;

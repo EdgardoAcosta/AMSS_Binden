@@ -64,13 +64,13 @@ public class InterfazCita extends HttpServlet {
             "<h2>Conectate con quien desees!</h2> \n");
 
             for(Usuario amigo : listAmigos){
-              out.println("Nombre: " + amigo.nombre + "\n" +
-                          "Correo: " + amigo.correo + "\n" +
-                          "Ubicacion: " + amigo.ubicacion + "\n" +
-                          "Descripcion: " + amigo.descripcion + "\n"
+              out.println("Nombre: " + amigo.getNombre() + "\n" +
+                          "Correo: " + amigo.getCorreo() + "\n" +
+                          "Ubicacion: " + amigo.getUbicacion() + "\n" +
+                          "Descripcion: " + amigo.getDescripcion() + "\n"
                           );
               //Este boton va a agregar la solicitud
-              out.println("<input type= 'submit' name='registrar' value='" + amigo.idUsuario + "'/>\n");
+              out.println("<input type= 'submit' name='registrar' value='" + amigo.getIdUsuario() + "'/>\n");
             }
 
             String act = request.getParameter("registrar");
@@ -80,7 +80,7 @@ public class InterfazCita extends HttpServlet {
             String dateNow = formatter.format(currentDate.getTime());
 
             if (act != null) {
-              cCita.agendarCita(idUsuario, act, dateNow, conn);
+              cCita.agendarCita(idUsuario, act, dateNow,"CETEC", conn);
             }
 
          out.println(

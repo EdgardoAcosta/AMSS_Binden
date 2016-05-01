@@ -61,13 +61,13 @@ public class InterfazSolicitud extends HttpServlet {
             "<h2>Conectate con quien desees!</h2> \n");
 
             for(Usuario user : listUsuarios){
-              out.println("Nombre: " + user.nombre + "\n" +
-                          "Correo: " + user.correo + "\n" +
-                          "Ubicacion: " + user.ubicacion + "\n" +
-                          "Descripcion: " + user.descripcion + "\n"
+              out.println("Nombre: " + user.getNombre() + "\n" +
+                          "Correo: " + user.getCorreo() + "\n" +
+                          "Ubicacion: " + user.getUbicacion() + "\n" +
+                          "Descripcion: " + user.getDescripcion() + "\n"
                           );
               //Este boton va a agregar la solicitud
-              out.println("<input type= 'submit' name='registrar' value='" + user.idUsuario + "'/>\n");
+              out.println("<input type= 'submit' name='registrar' value='" + user.getIdUsuario() + "'/>\n");
             }
 
             String act = request.getParameter("registrar");

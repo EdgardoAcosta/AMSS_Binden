@@ -65,14 +65,14 @@ public class InterfazVerCitas extends HttpServlet {
             "<h2>Conectate con quien desees!</h2> \n");
 
             for(Cita cita : listCitas){
-              out.println("Usuario 1: " + cita.usuario1 + "\n" +
-                          "Usuario 2: " + cita.usuario2 + "\n" +
-                          "Lugar: " + cita.descripcion + "\n" +
-                          "Fecha: " + cita.fecha + "\n"
+              out.println("Usuario 1: " + cita.getUsuario1() + "\n" +
+                          "Usuario 2: " + cita.getUsuario2()+ "\n" +
+                          "Lugar: " + cita.getDescripcion()+ "\n" +
+                          "Fecha: " + cita.getFecha() + "\n"
                           );
               //Este boton va a agregar la solicitud
-              out.println("<input type= 'submit' name='aceptar' value='" + cita.idCita + "'/>\n");
-              out.println("<input type= 'submit' name='rechazar' value='" + cita.idCita + "'/>\n");
+              out.println("<input type= 'submit' name='aceptar' value='" + cita.getIdCita() + "'/>\n");
+              out.println("<input type= 'submit' name='rechazar' value='" + cita.getIdCita() + "'/>\n");
 
             }
 

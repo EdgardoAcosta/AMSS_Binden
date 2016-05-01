@@ -11,6 +11,38 @@ public class Usuario {
    String correo,contra, tipo, nombre, ubicacion, descripcion;
    int idUsuario;
 
+    public PreparedStatement getStmt() {
+        return stmt;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public String getContra() {
+        return contra;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
    public Usuario(){
 
    }

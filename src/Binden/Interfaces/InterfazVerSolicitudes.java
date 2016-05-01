@@ -61,11 +61,11 @@ public class InterfazVerSolicitudes extends HttpServlet {
             "<h2>Solicitudes pendientes:</h2> \n");
 
             for(Solicitud sol : listSolicitudes){
-              out.println("Nombre: " + sol.usuario1 + "\n"
+              out.println("Nombre: " + sol.getUsuario1() + "\n"
                           );
               //Este boton va a agregar la solicitud
-              out.println("<input type= 'submit' name='aceptar' value='" + sol.idSolicitud + "'/>\n");
-              out.println("<input type= 'submit' name='rechazar' value='" + sol.idSolicitud + "'/>\n");
+              out.println("<input type= 'submit' name='aceptar' value='" + sol.getIdSolicitud() + "'/>\n");
+              out.println("<input type= 'submit' name='rechazar' value='" + sol.getIdSolicitud() + "'/>\n");
             }
 
             String aceptar = request.getParameter("aceptar");
@@ -73,9 +73,9 @@ public class InterfazVerSolicitudes extends HttpServlet {
 
 
             if (aceptar != null) {
-              cSolicitud.aceptarSolicitud(idUsuario, sol.usuario2, conn);
+              cSolicitud.aceptarSolicitud(idUsuario, aceptar , conn);
             } else if (rechazar != null){
-              cSolicitud.borrarSolicitud(idUsuario, sol.usuario2, conn);
+              cSolicitud.ignorarSolicitud(rechazar , conn);
             }
 
          out.println(
