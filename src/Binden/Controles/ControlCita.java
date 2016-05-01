@@ -11,12 +11,15 @@ public class ControlCita {
    Usuario usuario2;
 
    public ControlCita(){
-    
+
    }
 
    public ArrayList<Usuario> obtenerUsuarios (String tipo, Connection con){
      return usuario1.obtenerUsuarios(tipo, con);
-       
+   }
+
+   public ArrayList<Usuario> obtenerAmigos(String idUsuario1, Connection con){
+     return usuario1.obtenerAmigos(idUsuario1, con);
    }
 
    public void agendarCita(String receiver, String sender, String fecha,

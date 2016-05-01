@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 
 //Utilizando urlPatterns en lugar de urlPattern permite agregar mas parametros a la anotacion
-@WebServlet(urlPatterns = "/Conocer",
+@WebServlet(urlPatterns = "/Amigos",
   initParams = {
      @WebInitParam(name = "class", value = "interfaces.InterfazCita")
   }
@@ -42,7 +42,7 @@ public class InterfazCita extends HttpServlet {
 
         ControlCita cCita = new ControlCita();
 
-        //ArrayList<Usuario> listUsuarios = cCita.obtenerUsuarios(cCita.obtenerTipoUsuario(idUsuario));
+        ArrayList<Usuario> listUsuarios = cCita.obtenerUsuarios(cCita.obtenerTipoUsuario(idUsuario));
 
       if (sesion == null) { ///El usuario no esta logeado
 		     out.println("<font color=red>Favor de proporcionar primero usuario y clave.</font>");

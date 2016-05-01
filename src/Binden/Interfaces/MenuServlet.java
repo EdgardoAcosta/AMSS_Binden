@@ -49,6 +49,7 @@ public class MenuServlet extends HttpServlet {
             "<h3>Indica la operacion que deseas realizar</h3> </p>" +
             "<a href=Conocer>Conocer gente</a> </p>" +
             "<a href=Solicitudes>Ver solicitudes</a> </p>" +
+            "<a href=Amigos>Ver amigos</a></p>" +
             "<a href=Agenda>Consultar agenda</a> </p>" +
             "</body>" +
             "</html>"

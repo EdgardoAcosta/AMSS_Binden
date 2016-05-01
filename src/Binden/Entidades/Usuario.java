@@ -10,9 +10,9 @@ public class Usuario {
    PreparedStatement stmt;
    String correo,contra, tipo, nombre, ubicacion, descripcion;
    int idUsuario;
-   
+
    public Usuario(){
-       
+
    }
 
    public Usuario(String mail,String password,String type,String name,String ubica,String desc, int id){
@@ -89,6 +89,29 @@ public class Usuario {
      } catch (SQLException e) {}
        return( lista );
    }
+
+   public ArrayList<Usuario> obtenerAmigos(String idUsuario1, Connection con){
+      ArrayList<Usuario> lista = new ArrayList<Usuario>();
+     try {
+
+        String query = "SELECT nombre,idUsuario,correo,tipoUsuario,descripcion,contra,ubicacion FROM Usuario WHERE tipoUsuario = ? ";
+        stmt = con.prepareStatement(query);
+        stmt.setString(1, tipo);
+
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+
+           lista.add(new Usuario(rs.getString("correo"),rs.getString("contra"),
+           rs.getString("tipo"),rs.getString("nombre"),rs.getString("ubicacion"),rs.getString("descripcion"),
+           rs.getInt("idUsuario") )   );
+        }
+         rs.close();
+
+
+     } catch (SQLException e) {}
+       return( lista );
+   }
+
    public String obtenerTipoUsuario (String idUsuario, Connection con){
      String  ret = "N/A";
      try {
