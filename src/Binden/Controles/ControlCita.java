@@ -22,6 +22,10 @@ public class ControlCita {
      return usuario1.obtenerAmigos(idUsuario1, con);
    }
 
+   public ArrayList<Cita> obtenerCitas(String idUsuario1, Connection con){
+     return usuario1.obtenerCitas(idUsuario1, con);
+   }
+
    public void agendarCita(String receiver, String sender, String fecha,
         String descripcion, Connection con){
      cita.agregarCita(sender, receiver, fecha, descripcion, con);

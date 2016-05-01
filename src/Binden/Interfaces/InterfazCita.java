@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import Binden.Controles.ControlCita;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 //Utilizando urlPatterns en lugar de urlPattern permite agregar mas parametros a la anotacion
@@ -42,7 +44,7 @@ public class InterfazCita extends HttpServlet {
 
         ControlCita cCita = new ControlCita();
 
-        ArrayList<Usuario> listUsuarios = cCita.obtenerUsuarios(cCita.obtenerTipoUsuario(idUsuario));
+        ArrayList<Usuario> listAmigos = cCita.obtenerAmigos(idUsuario, conn);
 
       if (sesion == null) { ///El usuario no esta logeado
 		     out.println("<font color=red>Favor de proporcionar primero usuario y clave.</font>");
@@ -61,24 +63,28 @@ public class InterfazCita extends HttpServlet {
             "<title>Binden</title> \n" +
             "<h2>Conectate con quien desees!</h2> \n");
 
-            for(Usuario user : listUsuarios){
-              out.println("Nombre: " + user.nombre + "\n" +
-                          "Correo: " + user.correo + "\n" +
-                          "Ubicacion: " + user.ubicacion + "\n" +
-                          "Descripcion: " + user.descripcion + "\n"
+            for(Usuario amigo : listAmigos){
+              out.println("Nombre: " + amigo.nombre + "\n" +
+                          "Correo: " + amigo.correo + "\n" +
+                          "Ubicacion: " + amigo.ubicacion + "\n" +
+                          "Descripcion: " + amigo.descripcion + "\n"
                           );
               //Este boton va a agregar la solicitud
-              out.println("<input type= 'submit' name='registrar' value='" + user.idUsuario + "'/>\n");
-              cCita.agendarCita(idUsuario, user.idUsuario, conn);
+              out.println("<input type= 'submit' name='registrar' value='" + amigo.idUsuario + "'/>\n");
             }
 
             String act = request.getParameter("registrar");
 
+            Calendar currentDate = Calendar.getInstance();
+            SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-YYYY-hh:mm:ss");
+            String dateNow = formatter.format(currentDate.getTime());
+
             if (act != null) {
-              cCita.agendarCita(idUsuario, act, conn);
+              cCita.agendarCita(idUsuario, act, dateNow, conn);
             }
 
          out.println(
+            "<a href=Menu>Regresar</a> </p>" +
             "</body>" +
             "</html>"
          );
