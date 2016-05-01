@@ -14,6 +14,10 @@ public class Usuario {
    public Usuario(){
 
    }
+   public Usuario (String Nombre, int IdUsuario){
+       nombre = Nombre;
+       idUsuario = IdUsuario;
+   }
 
    public Usuario(String mail,String password,String type,String name,String ubica,String desc, int id){
      correo = mail;
@@ -94,20 +98,19 @@ public class Usuario {
       ArrayList<Usuario> lista = new ArrayList<Usuario>();
      try {
 
-        String query = "SELECT nombre,idUsuario,correo,tipoUsuario,descripcion,contra,ubicacion FROM Usuario WHERE tipoUsuario = ? ";
+        String query = "SELECT (select nombre FROM usuario WHERE idUsuario = C.IDUSUARIO2),"
+                + "(select idUsuario FROM usuario WHERE idUsuario = C.IDUSUARIO2) FROM USUARIO AS U JOIN USUARIO_CONEXION AS C  "
+                + "ON U.IDUSUARIO = C.IDUSUARIO1 WHERE U.IDUSUARIO = ?";
         stmt = con.prepareStatement(query);
-        stmt.setString(1, tipo);
+        stmt.setString(1, idUsuario1);
 
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
 
-           lista.add(new Usuario(rs.getString("correo"),rs.getString("contra"),
-           rs.getString("tipo"),rs.getString("nombre"),rs.getString("ubicacion"),rs.getString("descripcion"),
-           rs.getInt("idUsuario") )   );
+           lista.add(new Usuario(rs.getString("nombre"),rs.getInt("idUsuario"))   );
         }
          rs.close();
-
-
+         
      } catch (SQLException e) {}
        return( lista );
    }
